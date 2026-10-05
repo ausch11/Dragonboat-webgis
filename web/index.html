@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#165b47">
+  <meta name="description" content="龙舟赛事地图：探索赛事、查询附近活动、收藏日程并了解龙舟规则。">
+  <title>舟行 · 龙舟赛事地图</title>
+  <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <header class="header">
+    <a class="brand" href="#explore"><img src="/assets/icon.svg" alt="" width="38" height="38"><span>舟行<small>DRAGONBOAT ATLAS</small></span></a>
+    <nav class="nav" aria-label="主导航">
+      <a href="#explore" data-view="explore">赛事探索</a>
+      <a href="#map" data-view="map">赛事地图</a>
+      <a href="#assistant" data-view="assistant">知识助手</a>
+      <a href="#favorites" data-view="favorites">我的收藏</a>
+      <a href="#admin" data-view="admin" id="admin-nav" hidden>管理工作台</a>
+    </nav>
+    <div id="auth-area" class="auth-area"><button class="button small" data-action="login">登录 / 注册</button></div>
+  </header>
+
+  <main class="shell">
+    <section class="hero" id="hero">
+      <div class="hero-copy"><span class="eyebrow"><span class="dot"></span> 在水面相遇 · 在地图出发</span><h1>沿着水面，发现<br>下一场<span>龙舟。</span></h1><p>探索城市赛事，收藏你的日程。<br>让每一次出发，都有清晰的方向。</p><div class="hero-actions"><a class="button" href="#map">打开赛事地图 <span>↗</span></a><a class="text-link" href="#assistant">向知识助手提问 →</a></div></div>
+      <div class="hero-art"><img src="/assets/hero.svg" alt="湖面上划行的龙舟与远处的山景"><span class="art-label">同舟共济 · 向前而行</span></div>
+    </section>
+
+    <section id="explore-view" class="view">
+      <div class="section-head"><div><span class="eyebrow">FIND YOUR NEXT RACE</span><h2 id="events-heading">从这里，找到你的下一站</h2></div><p class="muted" id="result-summary" aria-live="polite">正在读取赛事…</p></div>
+      <form id="filters" class="filter-panel">
+        <label class="search-field">搜索赛事<input name="q" placeholder="赛事名称或关键词" maxlength="100"></label>
+        <label>城市<select name="city" id="city-select"><option value="">全部城市</option></select></label>
+        <label>开始日期<input name="start_date" type="date"></label>
+        <label>结束日期<input name="end_date" type="date"></label>
+        <label>距离参考点<select name="origin" id="origin-select"><option value="">不限制距离</option><option value="custom">输入经纬度</option></select></label>
+        <label>半径（公里）<input name="radius_km" type="number" min="0.1" max="3000" step="0.1" value="200" disabled></label>
+        <div id="coordinate-fields" class="coordinate-fields" hidden><label>经度（WGS84）<input name="longitude" type="number" step="any" min="-180" max="180" placeholder="118.792"></label><label>纬度（WGS84）<input name="latitude" type="number" step="any" min="-85" max="85" placeholder="32.023"></label></div>
+        <div class="filter-actions"><label class="sort-label">排序<select name="sort"><option value="date">日期由近到远</option><option value="newest">最近发布</option><option value="distance">距离由近到远</option></select></label><button class="button" type="submit">查找赛事</button><button class="button ghost" type="button" id="reset-filters">查看全部</button></div>
+      </form>
+      <div class="demo-note"><span>示例数据</span> 初始赛事、地点和知识资料用于演示；赛事不是实际报名信息。距离为直线距离。</div>
+      <div class="explore-layout" id="explore-layout">
+        <div class="event-column"><div id="event-list" class="event-grid" aria-live="polite"></div><div id="pagination" class="pagination"></div></div>
+        <aside class="map-panel"><div class="map-top"><div><span class="eyebrow">RACE LOCATIONS</span><h3>赛事分布</h3></div><span id="map-count" class="badge">0 个地点</span></div><div id="event-map" class="event-map" aria-label="可拖动的赛事地点地图"></div><div class="map-bottom"><span id="map-mode">离线示意底图</span><span>拖动平移 · 聚合点点击展开</span></div></aside>
+      </div>
+    </section>
+
+    <section id="assistant-view" class="view" hidden>
+      <div class="section-head"><div><span class="eyebrow">ASK, EXPLORE, UNDERSTAND</span><h2>让每个问题，都有出处</h2></div><a class="text-link" href="#rules">浏览知识资料 ↗</a></div>
+      <div class="assistant-layout"><aside class="assistant-intro"><div class="assistant-symbol">✦</div><h3>你的龙舟知识助手</h3><p>询问规则、寻找附近赛事，答案来自知识资料和赛事数据库。</p><span class="badge" id="engine-badge">本地知识检索</span><div class="suggestions"><button data-question="南京附近200公里有哪些赛事？">南京附近200公里有哪些赛事？ ↗</button><button data-question="下个月南京附近300公里有哪些赛事？">下个月南京附近300公里的赛事 ↗</button><button data-question="龙舟比赛常见距离是多少？">龙舟比赛常见距离是多少？ ↗</button><button data-question="参赛需要哪些安全装备？">参赛需要哪些安全装备？ ↗</button></div><p class="caption">可查询已发布赛事。示例知识不替代赛事正式规程。</p></aside><div class="chat-panel"><div id="chat-messages" class="chat-messages" aria-live="polite"><div class="chat-message assistant"><span class="chat-label">舟行助手</span><p>你好！可以问我“南京附近200公里有哪些赛事”，或“参赛需要哪些安全装备”。我会列出查询结果或附上知识来源。</p></div></div><form id="chat-form" class="chat-form"><label class="sr-only" for="chat-input">你的问题</label><textarea id="chat-input" name="question" maxlength="500" rows="2" placeholder="写下你的问题，让探索更简单…" required></textarea><button class="button" type="submit">发送 ↑</button></form><p class="chat-caption" id="chat-caption">未配置模型时，使用本地检索与预定义查询工具。</p></div></div>
+    </section>
+
+    <section id="rules-view" class="view" hidden><div class="section-head"><div><span class="eyebrow">DRAGONBOAT KNOWLEDGE</span><h2>出发前，多了解一点</h2></div><a class="text-link" href="#assistant">向助手提问 →</a></div><p class="muted">资料显示来源与更新时间。示例资料仅供课程演示。</p><div id="rule-list" class="rule-grid"></div></section>
+
+    <section id="admin-view" class="view" hidden><div class="section-head"><div><span class="eyebrow">ADMIN WORKSPACE</span><h2>把一场赛事，带到大家面前</h2></div><button class="button" id="new-event">＋ 发布赛事</button></div><div id="admin-gate"></div><div id="admin-content" hidden><div id="admin-stats" class="stats"></div><div class="admin-tabs"><button class="active" data-admin-tab="events">赛事管理</button><button data-admin-tab="venues">比赛地点</button><button data-admin-tab="rules">知识资料</button><button data-admin-tab="activity">运行与反馈</button></div><div id="admin-events"><div class="table-wrap"><table><thead><tr><th>赛事 / 地点</th><th>日程</th><th>状态</th><th>操作</th></tr></thead><tbody id="admin-event-rows"></tbody></table></div></div><div id="admin-venues" hidden><div class="subsection-head"><p class="muted">所有地点采用 WGS84 经纬度。</p><button class="button small" id="new-venue">＋ 新增地点</button></div><div id="admin-venue-list" class="management-grid"></div></div><div id="admin-rules" hidden><div class="subsection-head"><p class="muted">录入正文后即可被知识助手检索。</p><button class="button small" id="new-rule">＋ 新增资料</button></div><div id="admin-rule-list" class="management-grid"></div></div><div id="admin-activity" hidden><div id="admin-activity-content"></div></div></div></section>
+    <div id="fatal-error" class="empty-state" hidden></div>
+  </main>
+
+  <footer class="footer"><div class="brand-text">舟行 <span>让探索有方向</span></div><div><a href="#rules">知识资料</a><button class="text-link" id="feedback-button">意见反馈</button><a href="/api-guide.html">API 文档</a></div><p>WebGIS 课程项目 · 赛事智能地图</p></footer>
+  <dialog id="modal" class="modal"><button class="modal-close" aria-label="关闭对话框">×</button><div id="modal-content"></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

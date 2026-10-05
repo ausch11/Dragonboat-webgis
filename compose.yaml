@@ -1,0 +1,17 @@
+services:
+  web:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - dragonboat-data:/app/data
+    environment:
+      APP_HOST: 0.0.0.0
+      ADMIN_INITIAL_PASSWORD: ${ADMIN_INITIAL_PASSWORD:-Admin@12345}
+      DEMO_INITIAL_PASSWORD: ${DEMO_INITIAL_PASSWORD:-User@12345}
+      LLM_API_URL: ${LLM_API_URL:-}
+      LLM_API_KEY: ${LLM_API_KEY:-}
+      LLM_MODEL: ${LLM_MODEL:-}
+    restart: unless-stopped
+volumes:
+  dragonboat-data:

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="龙舟占位插画">
+ <defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#dfebea"/><stop offset="1" stop-color="#f6f5e8"/></linearGradient></defs>
+ <rect width="640" height="360" fill="url(#sky)"/><circle cx="489" cy="73" r="30" fill="#f7f4dd"/>
+ <path d="M-20 188L60 130L100 158L180 77L273 172L340 120L416 181L510 107L690 194V220H-20" fill="#6b9d9c" opacity=".24"/>
+ <path d="M-20 195L68 170L163 189L247 153L348 188L441 162L575 185L680 171V240H-20" fill="#6b9d9c" opacity=".35"/>
+ <path d="M0 205Q120 186 230 212T640 204V360H0" fill="#b8d5d3"/>
+ <g stroke="#dfebea" fill="none" opacity=".8"><path d="M-30 272Q110 241 260 269T680 265"/><path d="M-60 304Q90 279 230 303T640 307"/><path d="M22 334Q120 313 274 331T580 333"/></g>
+ <g transform="translate(205 208)">
+ <path d="M0 24Q38 39 162 34L205 14Q175 58 67 53Q22 48 0 24" fill="#2b655b"/>
+ <path d="M197 20L212 -2L232 -6L224 8L213 6L208 26" fill="#2b655b"/>
+ <path d="M1 28L-16 10L-9 28L5 40" fill="#2b655b"/>
+ <path d="M22 24L188 20" stroke="#f6f3d6" stroke-width="3"/>
+ <g transform="translate(24 0)"><circle cx="0" cy="0" r="6" fill="#2b655b"/><path d="M0 7L-6 24H9L3 7" fill="#2b655b"/><path d="M-4 11L22 21L39 49" fill="none" stroke="#2b655b" stroke-width="4" stroke-linecap="round"/><path d="M35 43L45 56" stroke="#2b655b" stroke-width="7" stroke-linecap="round"/></g><g transform="translate(52 0)"><circle cx="0" cy="0" r="6" fill="#2b655b"/><path d="M0 7L-6 24H9L3 7" fill="#2b655b"/><path d="M-4 11L22 21L39 49" fill="none" stroke="#2b655b" stroke-width="4" stroke-linecap="round"/><path d="M35 43L45 56" stroke="#2b655b" stroke-width="7" stroke-linecap="round"/></g><g transform="translate(80 0)"><circle cx="0" cy="0" r="6" fill="#2b655b"/><path d="M0 7L-6 24H9L3 7" fill="#2b655b"/><path d="M-4 11L22 21L39 49" fill="none" stroke="#2b655b" stroke-width="4" stroke-linecap="round"/><path d="M35 43L45 56" stroke="#2b655b" stroke-width="7" stroke-linecap="round"/></g><g transform="translate(108 0)"><circle cx="0" cy="0" r="6" fill="#2b655b"/><path d="M0 7L-6 24H9L3 7" fill="#2b655b"/><path d="M-4 11L22 21L39 49" fill="none" stroke="#2b655b" stroke-width="4" stroke-linecap="round"/><path d="M35 43L45 56" stroke="#2b655b" stroke-width="7" stroke-linecap="round"/></g><g transform="translate(136 0)"><circle cx="0" cy="0" r="6" fill="#2b655b"/><path d="M0 7L-6 24H9L3 7" fill="#2b655b"/><path d="M-4 11L22 21L39 49" fill="none" stroke="#2b655b" stroke-width="4" stroke-linecap="round"/><path d="M35 43L45 56" stroke="#2b655b" stroke-width="7" stroke-linecap="round"/></g><g transform="translate(164 0)"><circle cx="0" cy="0" r="6" fill="#2b655b"/><path d="M0 7L-6 24H9L3 7" fill="#2b655b"/><path d="M-4 11L22 21L39 49" fill="none" stroke="#2b655b" stroke-width="4" stroke-linecap="round"/><path d="M35 43L45 56" stroke="#2b655b" stroke-width="7" stroke-linecap="round"/></g>
+ <circle cx="201" cy="-1" r="2" fill="#ede5c7"/>
+ </g><path d="M46 360L48 276M48 306L29 295M48 319L67 301M57 360L61 289M61 317L76 309" stroke="#2b655b" opacity=".3" stroke-width="3" fill="none"/>
+ <path d="M530 285L547 285M555 285L567 285M438 298L454 298" stroke="#2b655b" opacity=".3" stroke-width="2"/>
+ </svg>
