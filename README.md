@@ -7,7 +7,7 @@
 需要 **Python 3.10 或以上版本**，无需安装第三方 Python 包、Node.js 或数据库服务。
 
 ```bash
-git clone https://github.com/ausch11/dragonboat-webgis.git
+git clone https://github.com/ausch11/Dragonboat-webgis.git dragonboat-webgis
 cd dragonboat-webgis
 python server.py
 ```
